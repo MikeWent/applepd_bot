@@ -1,0 +1,5 @@
+wheel
+pyTelegramBotAPI
+requests
+hurry.filesize
+mutagen
