@@ -129,11 +129,12 @@ def worker(message, url):
     audiofile = mutagen.File(filename)
     title = audiofile.tags.get("TIT2", None)
     performer = audiofile.tags.get("TPE1", None)
-
+    duration = int(audiofile.info.length)
     # Upload
     update_status_message(status_message, message_uploading)
-    bot.send_audio(message.chat.id, open(filename, "rb"), title=title, performer=performer)
+    bot.send_audio(message.chat.id, open(filename, "rb"), title=title, performer=performer, duration=duration)
 
+    bot.delete_message(message.chat.id, status_message.message_id)
     rm(filename)
 
 ### Telegram interaction below ###
