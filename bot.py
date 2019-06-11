@@ -134,6 +134,8 @@ def worker(message, url):
     update_status_message(status_message, message_uploading)
     bot.send_audio(message.chat.id, open(filename, "rb"), title=title, performer=performer)
 
+    rm(filename)
+
 ### Telegram interaction below ###
 try:
     with open("token.txt", "r") as f:
@@ -183,6 +185,7 @@ def handle_files(message):
         bot.send_message(message.chat.id, error_parsing, parse_mode="HTML")
         return
     list_of_urls += "Total: {}\n".format(count)
-    bot.send_message(message.chat.id, list_of_urls, parse_mode="HTML")
+    bot.send_message(message.chat.id, list_of_urls, parse_mode="HTML", disable_web_page_preview=True)
+    rm(filename)
 
 bot.polling(none_stop=True)
