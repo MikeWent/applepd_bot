@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Date schema:
+# Data schema:
 # (start) (12b junk) artist (5* byte) (1b junk) title (col) (1b junk) date and time (col) (1b junk) url (urldur) duration (col) (1b junk) thumbnail url (end)
 
 keybytes = {
